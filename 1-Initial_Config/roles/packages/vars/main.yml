@@ -1,0 +1,7 @@
+---
+## vars file for packages
+packages:
+  - ansible
+  - docker
+galaxy_collections:
+  - community.general

@@ -1,0 +1,26 @@
+---
+- name: INSTALL MICROK8S
+  hosts: all
+  become: yes
+  vars_files:
+    - vars/vars.yml
+  roles:
+    - k8ssnap
+
+- name: MAKE MASTER
+  hosts: all
+  become: yes
+  
+  tasks:
+    - name: Generate connection string
+      shell: microk8s.add-node
+      register: nodeinfo
+      when: inventory_hostname in groups['kubemasters']
+
+    - name: DEBUG
+      debug:
+        var: nodeinfo
+
+    - name: Add nodes to cluster
+      shell: "{{ hostvars[groups['kubemasters'][0]]['nodeinfo']['stdout_lines'][1] }}"
+      when: inventory_hostname in groups['kubeworkers']

@@ -1,0 +1,5 @@
+cluster_hosts:
+  - { ip: "10.0.0.201" , hostname: "klap-master" }
+  - { ip: "10.0.0.211" , hostname: "klap-worker-01" }
+  - { ip: "10.0.0.212" , hostname: "klap-worker-02" }
+  - { ip: "10.0.0.213" , hostname: "klap-worker-03" }

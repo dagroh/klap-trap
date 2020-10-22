@@ -1,0 +1,6 @@
+---
+- name: Install k8s Snap
+  hosts: all
+  community.general.snap:
+    name: microk8s
+    classic: yes

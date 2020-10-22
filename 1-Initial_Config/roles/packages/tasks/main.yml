@@ -1,0 +1,11 @@
+---
+# tasks file for packages
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"
+# install collection locally to run tasks in 2
+- name: Install collections
+  local_action: ansible-galaxy collection install {{ item }}
+  loop: "{{ galaxy_collections }}"

@@ -1,0 +1,9 @@
+---
+# tasks file for kubeinstall
+- name: Install k8s Snap
+  community.general.snap:
+    name: microk8s
+    classic: yes
+
+- name: Start microk8s
+  shell: microk8s.start
